@@ -20,7 +20,7 @@ def preprocess_image(image):
 
 if uploaded_file:
     image = Image.open(uploaded_file)
-    st.image(image, caption='Imagen subida', use_column_width=True)
+    st.image(image, caption='Imagen subida', use_container_width=True)  # Aquí se hace el cambio
 
     img = preprocess_image(image)
     pred = model.predict(np.expand_dims(img, axis=0))[0]
@@ -30,3 +30,4 @@ if uploaded_file:
     st.subheader("Probabilidades:")
     for i, p in enumerate(pred):
         st.write(f"{i+1}: {p*100:.2f}%")
+
